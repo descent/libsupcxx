@@ -53,17 +53,18 @@ if [ x"$REPLY" != xy ]; then
   exit 0;
 fi
 
-TEMPDIR=`mktemp -d`;
+TEMPDIR=./toolchain-src
+#TEMPDIR=`mktemp -d`;
 
 (
   echo "[i] Working in ${TEMPDIR}";
   cd ${TEMPDIR};
 
-  progress "[i] Donwloading binutils" wget http://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}.tar.bz2;
-  progress "[i] Downloading gcc" wget ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-${GCCVER}/gcc-${GCCVER}.tar.xz;
-  progress "[i] Downloading gdb" wget https://ftp.gnu.org/gnu/gdb/gdb-${GDBVER}.tar.xz;
+#  progress "[i] Donwloading binutils" wget http://ftp.gnu.org/gnu/binutils/binutils-${BINUTILSVER}.tar.bz2;
+#  progress "[i] Downloading gcc" wget ftp://ftp.fu-berlin.de/unix/languages/gcc/releases/gcc-${GCCVER}/gcc-${GCCVER}.tar.xz;
+#  progress "[i] Downloading gdb" wget https://ftp.gnu.org/gnu/gdb/gdb-${GDBVER}.tar.xz;
 
-  progress "[i] Unpacking binutils" tar jxf binutils-${BINUTILSVER}.tar.bz2;
+  progress "[i] Unpacking binutils" tar xf binutils-${BINUTILSVER}.tar.bz2;
   mkdir binutils-build;
   cd binutils-build;
   progress "[i] Configuring binutils" ../binutils-${BINUTILSVER}/configure --target=${TARGET} --prefix=${PREFIX} \
